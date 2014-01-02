@@ -10,9 +10,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="stil.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script language="javascript" type="text/javascript">
+	  function getSelect(s) {
+	    return s.options[s.selectedIndex].value
+	  }
+    </script>
   </head>
 <body>
 <h1>Hello World</h1>
+
+<select name="list" size=1 OnChange="location=getSelect(this)">
+<option value="#pso">pso</option>
+<option value="#nginx">nginx</option>
+<option value="#apache">apache</option>
+<option value="#html5">html5</option>
+<option value="#css3">css3</option>
+</select>
 
 <h2 name="pso">Page Speed Optimization: PSO Is The New SEO</h2>
 <p><blackquote>Page speed optimization (PSO) is the new SEO: Miami App Developer WebFL.US Meets Web Marketing Needs with 
