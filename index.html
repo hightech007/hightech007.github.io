@@ -43,10 +43,115 @@ Optimizing images and other media is good way to bring load to minimum ... Imple
 good trick for rich site and page load ...</p>
 
 <h2 id="nginx">NGINX</h2>
-<p>Nginx is powerfull web server ...</p>
-<h3>My Nginx setup</h3>
-<p>Let's rock ...</p>
+<p>Nginx (pronounced engine-x) is a free, open-source, high-performance HTTP server and reverse proxy, as well as 
+an IMAP/POP3 proxy server. Igor Sysoev started development of Nginx in 2002, with the first public release in 2004. 
+Nginx now hosts nearly 12.18% (22.2M) of active sites across all domains. Nginx is known for its high performance, 
+stability, rich feature set, simple configuration, and low resource consumption.</p>
+<p>Nginx is one of a handful of servers written to address the C10K problem. Unlike traditional servers, Nginx 
+does not rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) 
+architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
+Even if you do not expect to handle thousands of simultaneous requests, you can still benefit from Nginx-s 
+high-performance and small memory footprint. Nginx scales in all directions: from the smallest VPS all the way 
+up to clusters of servers.></p>
+<h3>Set Up</h3>
+<p>Let's rock ... n cores - n worker_processes</p>
 <p><code>nano /etc/nginx/nginx.conf</code></p>
+<p><code><pre>
+user www-data;
+worker_processes 2;
+pid /var/run/nginx.pid;
+
+events {
+        worker_connections 768;
+        multi_accept on;
+}
+
+http {
+        client_max_body_size 20M;
+        sendfile on;
+        tcp_nopush on;
+        tcp_nodelay on;
+        keepalive_timeout 65;
+        types_hash_max_size 2048;
+        server_tokens off;
+        server_names_hash_bucket_size 64;
+        server_name_in_redirect off;
+        include /etc/nginx/mime.types;
+        default_type application/octet-stream;
+        access_log /var/log/nginx/access.log;
+        error_log /var/log/nginx/error.log;
+        gzip on;
+        gzip_disable "msie6";
+        gzip_vary on;
+        gzip_proxied any;
+        gzip_comp_level 6;
+        gzip_buffers 16 8k;
+        gzip_http_version 1.1;
+	gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml 
+	application/xml+rss text/javascript;
+        include /etc/nginx/conf.d/*.conf;
+        include /etc/nginx/sites-enabled/*;
+}
+</pre></code></p>
+<p><code>nano /etc/nginx/sites-available/default</code></p>
+<p><code><pre>
+server {
+	listen   80; 
+	listen   [::]:80 default_server ipv6only=on; 
+
+	root /path/to/htdocs/;
+	index index.php index.html index.htm;
+        autoindex on; #off recomended     
+	server_name localhost;
+
+	location / {
+		try_files $uri $uri/ /index.html;
+	}
+
+	# odbij scripte unutar "writable" direktorijuma
+    	location ~* /(images|cache|media|logs|tmp)/.*.(php|pl|py|jsp|asp|sh|cgi)$ {
+    		return 403;
+    		error_page 403 /403_error.html;
+    	}
+
+	# sprecava hotlinking
+	location ~ .(gif|png|jpe?g)$ {
+     		valid_referers none blocked  localhost *.localhost;
+     		if ($invalid_referer) {
+        	return   403;
+    		}
+	}
+
+	location ~ \.php$ {
+      		fastcgi_pass 127.0.0.1:9000;
+      		fastcgi_index index.php;
+      		fastcgi_param SCRIPT_FILENAME /path/to/htdocs/scripts$fastcgi_script_name;
+      		include fastcgi_params;
+   	}
+
+	location ~ .*\\.(py|sh|pl|cgi)$ {
+      		proxy_pass         http://127.0.0.1:1337;
+      		proxy_redirect     off;
+      		proxy_set_header   Host             $host;
+      		proxy_set_header   X-Real-IP        $remote_addr;
+      		proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+      		client_max_body_size       10m;
+      		client_body_buffer_size    128k;
+      		proxy_connect_timeout      90;
+      		proxy_send_timeout         90;
+      		proxy_read_timeout         90;
+      		proxy_buffer_size          4k;
+      		proxy_buffers              4 32k;
+      		proxy_busy_buffers_size    64k;
+      		proxy_temp_file_write_size 64k;
+  	}
+
+	location ~ /\.ht {
+		deny all;
+	}
+}
+</pre></code></p>
+
 
 <h2 id="apache">APACHE</h2>
 <p>The Apache Software Foundation provides support for the Apache community of open-source software projects, 
