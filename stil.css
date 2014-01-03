@@ -2,7 +2,7 @@
 body {width:80%;margin:0 auto;font-family: monospace, serif;}
 p {width:100%;float:left;padding-top:1%;color:#000;}
 a {color:#66CCFF;font-size:1.1em;text-decoration:none;}
-a:hover {color:#515151;}
+a:hover {color:#515151;text-decoration:underline;}
 h1 {width:100%;float:left;padding-top:1%;color:#111;}
 h2 {width:100%;float:left;padding-top:1%;color:#313131;border-bottom:1px solid #313131;}
 h3 {width:100%;float:left;padding-top:1%;color:#212121;}
