@@ -78,31 +78,31 @@ license and a desire to create high quality software that leads the way in its f
 <p>
 <pre>
 <code>
-//development mode - not recommended for production
-error_reporting(E_ALL);         
-ini_set('display_errors', 1);   
+
+//err dev mode != production
+error_reporting(E_ALL);ini_set('display_errors', 1);   
 //func cmprss
 function compress($bffr) {
-  	$srch = array('/\>[^\S ]+/s', '/[^\S ]+\</s',  '/(\s)+/s');
-  	$chng = array('>', '<', '\\1');
-  	return preg_replace($srch, $chng, $bffr);
+  $srch = array('/\>[^\S ]+/s', '/[^\S ]+\</s',  '/(\s)+/s');
+  $chng = array('>', '<', '\\1');
+  return preg_replace($srch, $chng, $bffr);
 }
 //pages
 class ng1np {
-	public function render($script) {
-		//ob_start();$this->_require($script);return ob_get_clean();
-		if (@ini_set('zlib.output_compression',TRUE) || @ini_set('zlib.output_compression_level',2)) 
-			{ob_start('compress');} else { ob_start('ob_gzhandler');}
-        	$this->_require($script);
-		if(extension_loaded('zlib')) { ob_end_flush(); }
+  public function render($script) {
+	//ob_start();$this->_require($script);return ob_get_clean();
+	if (@ini_set('zlib.output_compression',TRUE) || @ini_set('zlib.output_compression_level',2)) 
+		{ob_start('compress');} else { ob_start('ob_gzhandler');}
+        $this->_require($script);
+	if(extension_loaded('zlib')) { ob_end_flush(); }
+  }
+  public function __get($key) {
+	//engine: 1var <-> 1tpl 
+    	return(isset($this->$key)?$this->$key:null);
     	}
-    	public function __get($key) {
-		//engine: 1var <-> 1tpl 
-    		return(isset($this->$key)?$this->$key:null);
-    	}
-    	protected function _require() {
-		//inc_fnc: including script
-        	require_once func_get_arg(0);
+  protected function _require() {
+	//inc_fnc: including script
+       	require_once func_get_arg(0);
     	}
 }
 $eng = new ng1np();
