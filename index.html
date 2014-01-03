@@ -183,7 +183,36 @@ which provide software products for the public good.</p>
 license and a desire to create high quality software that leads the way in its field.</p>
 <h3>Set Apache Up on port 1337</h3>
 <p>Let's rock ...</p>
-<p><code>nano /etc/apache2/apache2.conf</code></p>
+<p><code><pre>
+#/etc/apache2/sites-available/default
+&lt;VirtualHost *:1337&gt;
+        ServerAdmin webmaster@localhost
+
+        DocumentRoot /path/to/htdocs/1337
+        &lt;Directory /&gt;
+                Options FollowSymLinks
+                AllowOverride None
+        &lt;/Directory&gt;
+        &lt;Directory /path/to/htdocs/1337/&gt;
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        &lt;/Directory&gt;
+
+        ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+        &lt;Directory "/usr/lib/cgi-bin"&gt;
+                AllowOverride None
+                Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+                Order allow,deny
+                Allow from all
+        &lt;/Directory&gt;
+        
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        LogLevel warn
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+&lt;/VirtualHost&gt;
+</pre></code></p>
 
 <h2 id="php">PHP</h2>
 <p><a href="#home">up</a></p>
