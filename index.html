@@ -104,12 +104,12 @@ server {
 	location / {
 		try_files $uri $uri/ /index.html;
 	}
-	# odbij scripte unutar "writable" direktorijuma
+	# deny scripts inside writable dir
     	location ~* /(images|cache|media|logs|tmp)/.*.(php|pl|py|jsp|asp|sh|cgi)$ {
     		return 403;
     		error_page 403 /403_error.html;
     	}
-	# sprecava hotlinking
+	# deny hotlinking
 	location ~ .(gif|png|jpe?g)$ {
      		valid_referers none blocked  localhost *.localhost;
      		if ($invalid_referer) {
@@ -144,7 +144,6 @@ server {
 }
 </pre></code></p>
 
-
 <h2 id="apache">Apache</h2>
 <p>The Apache Software Foundation provides support for the Apache community of open-source software projects, 
 which provide software products for the public good.</p>
@@ -155,7 +154,6 @@ license and a desire to create high quality software that leads the way in its f
 <p><code>nano /etc/apache2/apache2.conf</code></p>
 
 <h2 id="php">PHP</h2>
-<p>PHP is server-side programming language ...</p>
 <p>PHP is a popular general-purpose scripting language that is especially suited to web development.</p>
 <p>Fast, flexible and pragmatic, PHP powers everything from your blog to the most popular websites in the world.</p>
 <h3>The code</h3>
@@ -201,12 +199,12 @@ echo $eng-&gt;render('up/home.php');
 ?&gt;	
 </pre></code></p>
 
-<h2 id="html5">HTML5</h2>
+<h2 id="html5">Html5</h2>
 <p>html5 desc</p>
 <h3>html5 tricks</h3>
 <p>html5 tips and tricks</p>
 
-<h2 id="css3">CSS3</h2>
+<h2 id="css3">Css3</h2>
 <p>css3 desc</p>
 <h3>css3 tricks</h3>
 <p>css3 tips and tricks</p>
