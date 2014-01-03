@@ -25,6 +25,7 @@
 <option value="#apache">apache</option>
 <option value="#html5">html5</option>
 <option value="#css3">css3</option>
+<option value="#code">code</option>
 </select>
 
 <h2 id="pso">Page Speed Optimization: PSO Is The New SEO</h2>
@@ -78,27 +79,27 @@ license and a desire to create high quality software that leads the way in its f
 <p>
 <pre>
 <code>
-
+&lt;?php
 //err dev mode != production
 error_reporting(E_ALL);ini_set('display_errors', 1);   
 //func cmprss
 function compress($bffr) {
-  $srch = array('/\>[^\S ]+/s', '/[^\S ]+\</s',  '/(\s)+/s');
-  $chng = array('>', '<', '\\1');
+  $srch = array('/\&gt;[^\S ]+/s', '/[^\S ]+\&lt;/s',  '/(\s)+/s');
+  $chng = array('&gt;', '&lt;', '\\1');
   return preg_replace($srch, $chng, $bffr);
 }
 //pages
 class ng1np {
   public function render($script) {
-	//ob_start();$this->_require($script);return ob_get_clean();
+	//ob_start();$this-&gt;_require($script);return ob_get_clean();
 	if (@ini_set('zlib.output_compression',TRUE) || @ini_set('zlib.output_compression_level',2)) 
 		{ob_start('compress');} else { ob_start('ob_gzhandler');}
-        $this->_require($script);
+        $this-&gt;_require($script);
 	if(extension_loaded('zlib')) { ob_end_flush(); }
   }
   public function __get($key) {
-	//engine: 1var <-> 1tpl 
-    	return(isset($this->$key)?$this->$key:null);
+	//engine: 1var &lt;-&gt; 1tpl 
+    	return(isset($this-&gt;$key)?$this-&gt;$key:null);
     	}
   protected function _require() {
 	//inc_fnc: including script
@@ -107,14 +108,15 @@ class ng1np {
 }
 $eng = new ng1np();
 //variables
-$eng->css = '_set/css/stil.css';
-$eng->mp4 = 'media/big_buck_bunny.mp4';
-$eng->webm = 'media/big_buck_bunny.webm';
-$eng->ogv = 'media/big_buck_bunny.ogv';
-$eng->poster = 'media/big-buck-bunny_poster.jpg';
-$eng->swf = 'http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf';
+$eng-&gt;css = '_set/css/stil.css';
+$eng-&gt;mp4 = 'media/big_buck_bunny.mp4';
+$eng-&gt;webm = 'media/big_buck_bunny.webm';
+$eng-&gt;ogv = 'media/big_buck_bunny.ogv';
+$eng-&gt;poster = 'media/big-buck-bunny_poster.jpg';
+$eng-&gt;swf = 'http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf';
 //render page
-echo $eng->render('up/home.php');
+echo $eng-&gt;render('up/home.php');
+?&gt;
 </code>
 </pre>
 </p>
