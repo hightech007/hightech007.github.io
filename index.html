@@ -48,11 +48,11 @@ an IMAP/POP3 proxy server. Igor Sysoev started development of Nginx in 2002, wit
 Nginx now hosts nearly 12.18% (22.2M) of active sites across all domains. Nginx is known for its high performance, 
 stability, rich feature set, simple configuration, and low resource consumption.</p>
 <p>Nginx is one of a handful of servers written to address the C10K problem. Unlike traditional servers, Nginx 
-does not rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) 
+doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) 
 architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
-Even if you do not expect to handle thousands of simultaneous requests, you can still benefit from Nginx-s 
+Even if you don't expect to handle thousands of simultaneous requests, you can still benefit from Nginx-s 
 high-performance and small memory footprint. Nginx scales in all directions: from the smallest VPS all the way 
-up to clusters of servers.></p>
+up to clusters of servers.</p>
 <h3>Set Up</h3>
 <p>Let's rock ... n cores - n worker_processes</p>
 <p><code><pre>
@@ -60,12 +60,10 @@ up to clusters of servers.></p>
 user www-data;
 worker_processes 2;
 pid /var/run/nginx.pid;
-
 events {
         worker_connections 768;
         multi_accept on;
 }
-
 http {
         client_max_body_size 20M;
         sendfile on;
@@ -98,22 +96,18 @@ http {
 server {
 	listen   80; 
 	listen   [::]:80 default_server ipv6only=on; 
-
 	root /path/to/htdocs/;
 	index index.php index.html index.htm;
         autoindex on; #off recomended     
 	server_name localhost;
-
 	location / {
 		try_files $uri $uri/ /index.html;
 	}
-
 	# odbij scripte unutar "writable" direktorijuma
     	location ~* /(images|cache|media|logs|tmp)/.*.(php|pl|py|jsp|asp|sh|cgi)$ {
     		return 403;
     		error_page 403 /403_error.html;
     	}
-
 	# sprecava hotlinking
 	location ~ .(gif|png|jpe?g)$ {
      		valid_referers none blocked  localhost *.localhost;
@@ -121,14 +115,12 @@ server {
         	return   403;
     		}
 	}
-
 	location ~ \.php$ {
       		fastcgi_pass 127.0.0.1:9000;
       		fastcgi_index index.php;
       		fastcgi_param SCRIPT_FILENAME /path/to/htdocs/scripts$fastcgi_script_name;
       		include fastcgi_params;
    	}
-
 	location ~ .*\\.(py|sh|pl|cgi)$ {
       		proxy_pass         http://127.0.0.1:1337;
       		proxy_redirect     off;
@@ -145,7 +137,6 @@ server {
       		proxy_busy_buffers_size    64k;
       		proxy_temp_file_write_size 64k;
   	}
-
 	location ~ /\.ht {
 		deny all;
 	}
