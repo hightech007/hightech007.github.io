@@ -1,8 +1,10 @@
-*{
+*{font: inherit; 
+vertical-align: baseline;
   margin:0;
   padding:0;
   }
-  
+ 
+
 body {
   width:90%;font-size:90%;
   margin:0 auto;
@@ -56,3 +58,23 @@ h6 {width:100%;float:left;padding-top:1%;color:#717171;}
 code{width:98%;padding:1%;float:left;clear:both;}
 ul {width:100%;float:left;list-style-type:none;}
 ul li {display:block;}
+
+@media screen and (max-width: 480px) 	{
+  	pre {	background-color:#313131;color:#17f118;
+		width:100%;
+		float:left;
+		margin:0;
+		padding:0;
+		font-size:0.7em;
+		white-space: pre;           /* CSS 2.0 */
+    		white-space: pre-wrap;      /* CSS 2.1 */
+    		white-space: pre-line;      /* CSS 3.0 */
+    		white-space: -pre-wrap;     /* Opera 4-6 */
+    		white-space: -o-pre-wrap;   /* Opera 7 */
+   		white-space: -moz-pre-wrap; /* Mozilla */
+   		white-space: -hp-pre-wrap;  /* HP Printers */
+   		word-wrap: break-word;      /* IE 5+ */				
+		}
+	video, audio {width:100%;float:left;margin:0;padding:0;}
+  
+}
