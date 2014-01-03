@@ -4,7 +4,7 @@
   }
   
 body {
-  width:90%;
+  width:90%;font-size:90%;
   margin:0 auto;
   font-family: monospace, serif;
   }
@@ -31,12 +31,12 @@ a.node {
   color:#FFCC00;
   }
   
+svg {margin:0;padding:0;}
 h1 {width:100%;float:left;padding-top:1%;color:#111;}
 h2 {width:100%;float:left;padding-top:1%;color:#313131;border-bottom:1px solid #313131;}
-h3 {width:100%;float:left;padding-top:1%;color:#212121;}
+h3 {width:100%;float:left;padding-top:1%;color:#414141;}
 h4 {width:100%;float:left;padding-top:1%;color:#414141;}
 h5 {width:100%;float:left;padding-top:1%;color:#515151;}
 h6 {width:100%;float:left;padding-top:1%;color:#717171;}
 code{width:98%;padding:1%;float:left;clear:both;}
 ul {width:100%;float:left;list-style-type:none;}
-
