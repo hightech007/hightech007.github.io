@@ -14,6 +14,25 @@
 	  function getSelect(s) {
 	    return s.options[s.selectedIndex].value
 	  }
+	  function toggle(id) {
+  		'use strict';
+  		var e = document.getElementById(id);
+  		if (e.style.display == '')
+    		e.style.display = 'none';
+  		else
+    		e.style.display = '';
+	}
+	function toggle2(id, link) {
+  		'use strict';
+  		var e = document.getElementById(id);
+  		if (e.style.display == '') {
+    		e.style.display = 'none';
+    		link.innerHTML = 'dw';
+  		} else {
+    			e.style.display = '';
+    			link.innerHTML = 'up';
+  	}
+}
     </script>
   </head>
 <body>
@@ -32,6 +51,34 @@
 <option value="#css3">css3</option>
 <option value="#code">code</option>
 </select>
+<ul>
+	<li>
+    	<a href="#" onclick="toggle('node1')">Who we are ?</a>
+    	<ul id="node1" style="display:none">
+      		
+      		<li>	
+        	<a href="#" onclick="toggle('node2')">RULES</a>
+        	<ul id="node2" style="display:none">
+          		<li>This is an English speaking area. Speak only in English.</li>
+          		<li>Please be conscientious of other peoples hard work.</li>
+	  		<li>Aggressive behavior, flaming, spamming, flooding, and defamation 
+			WILL NOT be tolerated!</li> 
+	  		<li>This is a multicultural community. Racism and discrimination 
+			WILL NOT be tolerated!</li>	
+ 			<li>Disrespectfulness and aggression towards our staff 
+			WILL NOT be tolerated. We work very hard to maintain this 
+			website and keep it running smoothly.</li>
+          		<li>If you disagree with a decision made by a staff member or feel 
+			that you were mistreated, DO NOT discuss in the eye of our users! 
+			Please use the private messaging system to get in contact with the staff. 
+			We will be more than glad to help you.</li>
+	  		<li>Do not defy the moderators expressed wishes. Offenders risk 
+			receiving a warning. Multiple offenses will result in banishment.</li>
+		</ul>
+		</li>
+	</li>
+      </ul>
+</ul>
 
 <h2 id="pso">Page Speed Optimization: PSO Is The New SEO</h2>
 <p><a href="#home">up</a></p>
