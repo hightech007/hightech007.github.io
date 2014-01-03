@@ -55,8 +55,8 @@ high-performance and small memory footprint. Nginx scales in all directions: fro
 up to clusters of servers.></p>
 <h3>Set Up</h3>
 <p>Let's rock ... n cores - n worker_processes</p>
-<p><code>nano /etc/nginx/nginx.conf</code></p>
 <p><code><pre>
+#/etc/nginx/nginx.conf
 user www-data;
 worker_processes 2;
 pid /var/run/nginx.pid;
@@ -93,8 +93,8 @@ http {
         include /etc/nginx/sites-enabled/*;
 }
 </pre></code></p>
-<p><code>nano /etc/nginx/sites-available/default</code></p>
 <p><code><pre>
+#/etc/nginx/sites-available/default
 server {
 	listen   80; 
 	listen   [::]:80 default_server ipv6only=on; 
