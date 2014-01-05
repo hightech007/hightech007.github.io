@@ -55,6 +55,7 @@
 <option value="#nginx">nginx</option>
 <option value="#apache">apache</option>
 <option value="#php">php</option>
+<option value="#htaccess">htaccess</option>
 <option value="#javascript">javascript</option>
 <option value="#xml">xml</option>
 <option value="#svg">svg</option>
@@ -331,6 +332,26 @@ $eng-&gt;footer = 'open source';
 //render page
 echo $eng-&gt;render('up/home.php');
 ?&gt;	
+</pre></code></p>
+
+<h2 id="htaccess">.htaccess</h2>
+<p><a href="#home">up</a></p>
+<p>.htaccess</p>
+<h3>tip</h3>
+<p><code><pre>
+SetEnv TZ Europe/Belgrade
+AddDefaultCharset utf-8
+
+Options +FollowSymlinks
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} .
+RewriteCond %{HTTP_HOST} !^www\.domen\.tld [NC]
+RewriteRule (.*) http://www.domen.tld/$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)\.html$ index.php?q=$1 [L,QSA]
 </pre></code></p>
 
 <h2 id="javascript">JavaScript</h2>
