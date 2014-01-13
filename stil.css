@@ -1,52 +1,61 @@
-*{font: inherit; 
-vertical-align: baseline;
+*{
+  font: inherit; 
+  vertical-align: baseline;
   margin:0;
   padding:0;
-  }
+}
  
 
 body {
-  width:90%;font-size:90%;
+  width:90%;
+  font-size:17px;
   margin:0 auto;
   font-family: monospace, serif;
-  }
-audio, video, section, article, div, section, footer {display:block;}
+}
+
+audio, video, section, article, div, section, footer {
+  display:block;
+}
 
 p {
   width:100%;
   float:left;
   padding-top:1%;
   color:#313131;
-  }
+}
 
 a {
   color:#66CCFF;
   font-size:1.1em;
   text-decoration:none;
-  }
+}
   
 a:hover {
   color:#515151;
   text-decoration:underline;
-  }
+}
   
 a.node {
   color:#FFCC00;
-  }
+}
   
-svg {margin:0;padding:0;}
+svg {
+  margin:0;
+  padding:0;
+}
+
 video {
-float: left;
-margin-top: 1%;
-margin-bottom: 1%;
-padding: 0;
+  float: left;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  padding: 0;
 }
 
 audio {
-float: left;
-margin-top: 1%;
-margin-bottom: 1%;
-padding: 0;
+  float: left;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  padding: 0;
 }
 
 h1 {width:100%;float:left;padding-top:1%;color:#111;}
@@ -60,7 +69,9 @@ ul {width:100%;float:left;list-style-type:none;}
 ul li {display:block;}
 
 @media screen and (max-width: 480px) 	{
-  	pre {	background-color:#313131;color:#17f118;
+  	   pre {
+  	   	background-color:#313131;
+  	   	color:#17f118;
 		width:100%;
 		float:left;
 		margin:0;
@@ -75,6 +86,11 @@ ul li {display:block;}
    		white-space: -hp-pre-wrap;  /* HP Printers */
    		word-wrap: break-word;      /* IE 5+ */				
 		}
-	video, audio {width:100%;float:left;margin:0;padding:0;}
+	video, audio {
+		width:100%;
+		float:left;
+		margin:0;
+		padding:0;
+		}
   
 }
