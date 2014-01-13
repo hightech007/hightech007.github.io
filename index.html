@@ -252,6 +252,34 @@ server {
 }
 </pre></code></p>
 
+<h3>php-fpm socket nginx conf</h3>
+<p><code>apt-get install php5-fpm</code></p>
+<p><code><pre>
+#/etc/nginx/sites-available/default
+server {
+        listen   80;
+        root /path/to/htdocs;
+        index index.php index.html index.htm;
+        server_name localhost;
+        location / {
+                try_files $uri $uri/ /index.html;
+        }
+        error_page 404 /404.html;
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+              root /path/to/htdocs;
+        }
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        location ~ \.php$ {
+                try_files $uri =404;
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                include fastcgi_params;
+        }
+}
+</pre></code></p>
+
 
 <h2 id="apache">Apache</h2>
 <p><a href="#home">up</a></p>
