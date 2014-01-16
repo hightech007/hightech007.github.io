@@ -64,7 +64,7 @@ h3 {width:100%;float:left;padding-top:1%;color:#616161;}
 h4 {width:100%;float:left;padding-top:1%;color:#414141;}
 h5 {width:100%;float:left;padding-top:1%;color:#515151;}
 h6 {width:100%;float:left;padding-top:1%;color:#717171;}
-code{width:98%;padding:1%;float:left;clear:both;}
+code{width:78%;padding:1%;float:left;clear:both;margin:0 auto;background:#212121;color:#17f119;}
 ul {width:100%;float:left;list-style-type:none;}
 ul li {display:block;}
 
