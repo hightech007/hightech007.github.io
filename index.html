@@ -165,8 +165,7 @@ high-performance and small memory footprint. Nginx scales in all directions: fro
 up to clusters of servers.</p>
 <h3>Setup</h3>
 <p>Let's rock ... n cores - n worker_processes</p>
-<p><code><pre>
-#/etc/nginx/nginx.conf
+<p><code><pre>#/etc/nginx/nginx.conf
 user www-data;
 worker_processes 2;
 pid /var/run/nginx.pid;
@@ -201,8 +200,7 @@ http {
         include /etc/nginx/sites-enabled/*;
 }
 </pre></code></p>
-<p><code><pre>
-#/etc/nginx/sites-available/default
+<p><code><pre>#/etc/nginx/sites-available/default
 server {
 	listen   80; 
 	listen   [::]:80 default_server ipv6only=on; 
@@ -255,8 +253,7 @@ server {
 
 <h3 id="php-fpm">php-fpm socket nginx conf</h3>
 <p><code>apt-get install php5-fpm</code></p>
-<p><code><pre>
-#/etc/nginx/sites-available/default
+<p><code><pre>#/etc/nginx/sites-available/default
 server {
         listen   80;
         root /path/to/htdocs;
@@ -290,8 +287,7 @@ which provide software products for the public good.</p>
 license and a desire to create high quality software that leads the way in its field.</p>
 <h3>Set Apache Up on port 1337</h3>
 <p>Let's rock ...</p>
-<p><code><pre>
-#/etc/apache2/sites-available/default
+<p><code><pre>#/etc/apache2/sites-available/default
 &lt;VirtualHost *:1337&gt;
         ServerAdmin webmaster@localhost
 
@@ -328,8 +324,7 @@ license and a desire to create high quality software that leads the way in its f
 <p>Fast, flexible and pragmatic, PHP powers everything from your blog to the most popular websites in the world.</p>
 <h3>The code</h3>
 <p>Let's rock ... Set IT Up</p>
-<p><code><pre>
-&lt;?php
+<p><code><pre>&lt;?php
 //err dev mode != production
 error_reporting(E_ALL);ini_set('display_errors', 1);   
 //func cmprss
@@ -374,8 +369,7 @@ echo $eng-&gt;render('up/home.php');
 <p><a href="#home">up</a></p>
 <p>.htaccess</p>
 <h3>tip</h3>
-<p><code><pre>
-SetEnv TZ Europe/Belgrade
+<p><code><pre>SetEnv TZ Europe/Belgrade
 AddDefaultCharset utf-8
 
 Options +FollowSymlinks
