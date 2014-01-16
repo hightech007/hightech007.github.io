@@ -65,6 +65,7 @@ h4 {width:100%;float:left;padding-top:1%;color:#414141;}
 h5 {width:100%;float:left;padding-top:1%;color:#515151;}
 h6 {width:100%;float:left;padding-top:1%;color:#717171;}
 code{
+	border-top:2px solid white;
 	width: 80%;
 	margin: 0 auto;
 	margin-left: 10%;
